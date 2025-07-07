@@ -2,6 +2,10 @@ import tkinter as tk
 import proxmoxer 
 from proxmoxer import ProxmoxAPI
 import requests
+import paramiko
+
+
+
 
 # Box to enter your user and pswd
 root = tk.Tk()
@@ -13,26 +17,24 @@ host_label.pack()
 host_entry = tk.Entry(width=50)
 host_entry.pack()
 
-Username_label = tk.Label(root, text="Username")
+Username_label = tk.Label(root, text="Username:")
 Username_label.pack()
 
-Username_entry = tk.Entry(root, width=50, )
+Username_entry = tk.Entry(root, width=50 )
 Username_entry.pack()
 
-tokenid_label = tk.Label(root, text="Password")
-tokenid_label.pack()
 
-tokenid_entry = tk.Entry(root, width=50, show="*")
-tokenid_entry.pack()
+pass_label = tk.Label(root, text="Password:")
+pass_label.pack()
 
-tokensecret_label = tk.Label(root, text="Token ID")
-tokensecret_label.pack()
-
-tokensecret_entry = tk.Entry(width=50, show="*")
-tokensecret_entry.pack()
+pass_entry = tk.Entry(root, width=50, show="*")
+pass_entry.pack()
 
 def ProxAPI():
-    Try_API = ProxmoxAPI(host_entry, user=Username_entry, verify_ssl=False )
+    Hostname = host_entry.get()
+    User = Username_entry.get()
+    Password = pass_entry.get()
+    ProxmoxAPI(f'{Hostname}', user=f'{User}', password=f'{Password}', backend='ssh_paramiko', service='PVE')
 
 apiauth_button = tk.Button(root, text="Authenticate API", command=ProxAPI)
 apiauth_button.pack()

@@ -1,3 +1,4 @@
 proxmoxer == 2.2.0
 pywebview == 5.4
 requests == 2.32.4
+paramiko == 3.5.1
