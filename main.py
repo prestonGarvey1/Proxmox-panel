@@ -10,7 +10,9 @@ def load_page():
     web.start()
 
 def load_dataview():
+    root.destroy()
     os.system(f"python3 {cwd}\\Datapuller.py")
+    
     
 
 root = tk.Tk()
