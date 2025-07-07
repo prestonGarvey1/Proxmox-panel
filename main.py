@@ -3,10 +3,14 @@ from tkinter import ttk
 import webview as web
 import os
 
+cwd = os.getcwd()
 def load_page():
     url = f"http://{url_entry.get()}:{port_entry.get()}/{dir_entry.get()}"
     web.create_window("Webpage", url)
     web.start()
+
+def load_dataview():
+    os.system(f"python3 {cwd}\\Datapuller.py")
 
 root = tk.Tk()
 root.title("Enter your URL")
@@ -33,6 +37,9 @@ dir_entry = tk.Entry(root, width=50)
 dir_entry.pack()
 
 
+# Proxmox data viewer button
+data_button = tk.Button(root, text="Data View", command=load_dataview)
+data_button.pack()
 # Load webview
 load_button = tk.Button(root, text="Load Page", command=load_page)
 load_button.pack()
