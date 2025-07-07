@@ -4,7 +4,8 @@ import proxmoxer
 from proxmoxer import ProxmoxAPI
 import requests
 import paramiko
-
+import json
+import sys
 
 
 
@@ -47,18 +48,19 @@ def getusers():
     Hostname = host_entry.get()
     User = Username_entry.get()
     Password = pass_entry.get()
-    try:
-        API = ProxmoxAPI(f'{Hostname}', user=f'{User}', password=f'{Password}', backend='ssh_paramiko', service='PVE')
+    API = ProxmoxAPI(f'{Hostname}', user=f'{User}', password=f'{Password}', backend='ssh_paramiko', service='PVE')
+        
+    with open('users.json', 'w',) as f:
+        sys.stdout = f
         print(API.access.users.get())
+    print('dumped file')
     
-    except:
-        messagebox.showerror("Error", "Couldn't retrieve users.")
 
 
 apiauth_button = tk.Button(root, text="Check Authentication", command=ProxAPI)
 apiauth_button.pack()
 
-getusers_button = tk.Button(root, text='Get PAM users', command=getusers)
+getusers_button = tk.Button(root, text='Dump users file', command=getusers)
 getusers_button.pack()
 tk.mainloop()
 
