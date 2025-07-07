@@ -23,7 +23,6 @@ url_label = tk.Label(root, text="URL or IP:")
 url_label.pack()
 
 url_entry = tk.Entry(root, width=50)
-url_entry.insert(tk.END, "192.168.1.30")
 url_entry.pack()
 
 port_label = tk.Label(root, text="(Optional) Port:")
