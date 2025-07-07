@@ -11,6 +11,7 @@ def load_page():
 
 def load_dataview():
     os.system(f"python3 {cwd}\\Datapuller.py")
+    
 
 root = tk.Tk()
 root.title("Enter your URL")
