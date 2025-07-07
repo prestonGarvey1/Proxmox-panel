@@ -31,16 +31,35 @@ pass_label.pack()
 pass_entry = tk.Entry(root, width=50, show="*")
 pass_entry.pack()
 
+
 def ProxAPI():
     Hostname = host_entry.get()
     User = Username_entry.get()
     Password = pass_entry.get()
     try:
-        ProxmoxAPI(f'{Hostname}', user=f'{User}', password=f'{Password}', backend='ssh_paramiko', service='PVE')
+        API = ProxmoxAPI(f'{Hostname}', user=f'{User}', password=f'{Password}', backend='ssh_paramiko', service='PVE')
+        
     except:
         messagebox.showerror("Error", "Auth failed, check spelling and try again.")
-apiauth_button = tk.Button(root, text="Authenticate API", command=ProxAPI)
+   
+
+def getusers():
+    Hostname = host_entry.get()
+    User = Username_entry.get()
+    Password = pass_entry.get()
+    try:
+        API = ProxmoxAPI(f'{Hostname}', user=f'{User}', password=f'{Password}', backend='ssh_paramiko', service='PVE')
+        print(API.access.users.get())
+    
+    except:
+        messagebox.showerror("Error", "Couldn't retrieve users.")
+
+
+apiauth_button = tk.Button(root, text="Check Authentication", command=ProxAPI)
 apiauth_button.pack()
+
+getusers_button = tk.Button(root, text='Get PAM users', command=getusers)
+getusers_button.pack()
 tk.mainloop()
 
 
