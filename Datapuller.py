@@ -1,4 +1,5 @@
 import tkinter as tk
+import tkinter.messagebox as messagebox
 import proxmoxer 
 from proxmoxer import ProxmoxAPI
 import requests
@@ -34,8 +35,10 @@ def ProxAPI():
     Hostname = host_entry.get()
     User = Username_entry.get()
     Password = pass_entry.get()
-    ProxmoxAPI(f'{Hostname}', user=f'{User}', password=f'{Password}', backend='ssh_paramiko', service='PVE')
-
+    try:
+        ProxmoxAPI(f'{Hostname}', user=f'{User}', password=f'{Password}', backend='ssh_paramiko', service='PVE')
+    except:
+        messagebox.showerror("Error", "Auth failed, check spelling and try again.")
 apiauth_button = tk.Button(root, text="Authenticate API", command=ProxAPI)
 apiauth_button.pack()
 tk.mainloop()
