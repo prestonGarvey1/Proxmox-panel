@@ -34,6 +34,7 @@ pass_CTkEntry = customtkinter.CTkEntry(root, width=50, show="*")
 pass_CTkEntry.pack()
 
 
+
 def ProxAPI():
     Hostname = host_Entry.get()
     User = Username_Entry.get()
@@ -63,6 +64,15 @@ apiauth_button.pack(padx=10, pady=10)
 
 getusers_button = customtkinter.CTkButton(root, text='Dump users file', command=getusers)
 getusers_button.pack(padx=10, pady=10)
+
+
+#for api commands 
+custCommand_label = customtkinter.CTkLabel(root, width=50, text="Custom Command:")
+custCommand_label.pack()
+
+custCommand_entry = customtkinter.CTkEntry(root, width=50)
+custCommand_entry.pack()
+
 root.mainloop()
 
 

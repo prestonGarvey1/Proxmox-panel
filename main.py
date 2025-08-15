@@ -1,4 +1,5 @@
 import customtkinter
+import tkinter.messagebox
 import webview as web
 import os
 
@@ -11,6 +12,8 @@ def load_page():
 def load_dataview():
     root.destroy()
     os.system(f"python3 {cwd}\\Datapuller.py")
+ 
+
     
     
 
