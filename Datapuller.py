@@ -17,20 +17,20 @@ root.geometry("400x400")
 host_label = customtkinter.CTkLabel(root, text="Host:")
 host_label.pack()
 
-host_Entry = customtkinter.CTkEntry(root, width=50)
+host_Entry = customtkinter.CTkEntry(root, width=100)
 host_Entry.pack()
 
 Username_label = customtkinter.CTkLabel(root, text="Username:")
 Username_label.pack()
 
-Username_Entry = customtkinter.CTkEntry(root, width=50 )
+Username_Entry = customtkinter.CTkEntry(root, width=100)
 Username_Entry.pack()
 
 
 pass_label = customtkinter.CTkLabel(root, text="Password:")
 pass_label.pack()
 
-pass_CTkEntry = customtkinter.CTkEntry(root, width=50, show="*")
+pass_CTkEntry = customtkinter.CTkEntry(root, width=100, show="*")
 pass_CTkEntry.pack()
 
 
@@ -67,10 +67,10 @@ getusers_button.pack(padx=10, pady=10)
 
 
 #for api commands 
-custCommand_label = customtkinter.CTkLabel(root, width=50, text="Custom Command:")
+custCommand_label = customtkinter.CTkLabel(root, text="Custom Command:")
 custCommand_label.pack()
 
-custCommand_entry = customtkinter.CTkEntry(root, width=50)
+custCommand_entry = customtkinter.CTkEntry(root, width=100)
 custCommand_entry.pack()
 
 root.mainloop()
